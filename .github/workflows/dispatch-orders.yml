@@ -1,6 +1,13 @@
 name: Dispatch SkladMarket Telegram report
 
 on:
+  schedule:
+    # Temporary delivery test: 15:29 Asia/Novosibirsk (UTC+7), every day.
+    # Later slots retry if GitHub drops or delays the first schedule event.
+    - cron: "29 8 * * *"
+    - cron: "34 8 * * *"
+    - cron: "39 8 * * *"
+    - cron: "44 8 * * *"
   workflow_dispatch:
 
 permissions:
