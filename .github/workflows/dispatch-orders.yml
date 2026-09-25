@@ -1,13 +1,18 @@
 name: Dispatch SkladMarket Telegram report
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/dispatch-orders.yml
   schedule:
-    # Temporary delivery test: 15:29 Asia/Novosibirsk (UTC+7), every day.
+    # Temporary delivery test: 15:32 Asia/Novosibirsk (UTC+7), every day.
     # Later slots retry if GitHub drops or delays the first schedule event.
-    - cron: "29 8 * * *"
-    - cron: "34 8 * * *"
-    - cron: "39 8 * * *"
-    - cron: "44 8 * * *"
+    - cron: "32 8 * * *"
+    - cron: "37 8 * * *"
+    - cron: "42 8 * * *"
+    - cron: "47 8 * * *"
   workflow_dispatch:
 
 permissions:
@@ -18,7 +23,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  prime-scheduler:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Public scheduler registered from push; no private workflow is called."
   dispatch:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
