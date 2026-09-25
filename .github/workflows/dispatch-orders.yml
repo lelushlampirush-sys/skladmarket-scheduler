@@ -7,10 +7,10 @@ on:
     paths:
       - .github/workflows/dispatch-orders.yml
   schedule:
-    # 12:00 Asia/Novosibirsk (UTC+7), every day.
-    - cron: "0 5 * * *"
+    # 12:00 Asia/Novosibirsk (UTC+7), Monday-Friday.
+    - cron: "0 5 * * 1-5"
     # Native GitHub fallback if the first schedule event is dropped.
-    - cron: "15 5 * * *"
+    - cron: "15 5 * * 1-5"
   workflow_dispatch:
 
 permissions:
