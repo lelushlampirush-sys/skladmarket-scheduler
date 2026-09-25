@@ -7,12 +7,10 @@ on:
     paths:
       - .github/workflows/dispatch-orders.yml
   schedule:
-    # Temporary delivery test: 15:32 Asia/Novosibirsk (UTC+7), every day.
-    # Later slots retry if GitHub drops or delays the first schedule event.
-    - cron: "32 8 * * *"
-    - cron: "37 8 * * *"
-    - cron: "42 8 * * *"
-    - cron: "47 8 * * *"
+    # 12:00 Asia/Novosibirsk (UTC+7), every day.
+    - cron: "0 5 * * *"
+    # Native GitHub fallback if the first schedule event is dropped.
+    - cron: "15 5 * * *"
   workflow_dispatch:
 
 permissions:
