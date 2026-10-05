@@ -7,8 +7,8 @@ on:
     paths:
       - .github/workflows/dispatch-orders.yml
   schedule:
-    # GitHub starts these scheduled runs about six hours late in practice.
-    # 23:00 UTC Sunday-Thursday targets 12:00 Asia/Novosibirsk Monday-Friday.
+    # Six hours earlier than the previous 05:00 UTC schedule.
+    # Sunday-Thursday preserves Monday-Friday delivery after crossing midnight.
     - cron: "0 23 * * 0-4"
     # Native GitHub fallback if the first schedule event is dropped.
     - cron: "15 23 * * 0-4"
